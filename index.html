@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohan Vernekar </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --text-dark: #1f2937;
+            --text-medium: #4b5563;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+            --accent: #3b82f6;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        section {
+            background: var(--bg-white);
+            margin: 30px auto;
+            padding: 50px 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--bg-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            border: 1px solid var(--border);
+        }
+
+        .project-card {
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        .project-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+
+        .education-item {
+            padding: 20px;
+            border-left: 3px solid var(--primary);
+            margin-bottom: 20px;
+            background: var(--bg-light);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .education-item h3 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .education-meta {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .education-courses {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+
+        .achievements-list {
+            list-style: none;
+        }
+
+        .achievements-list li {
+            padding: 15px 0 15px 35px;
+            position: relative;
+            color: var(--text-medium);
+            line-height: 1.7;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .achievements-list li:last-child {
+            border-bottom: none;
+        }
+
+        .achievements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 35px 20px;
+                margin: 20px auto;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 60px 20px 40px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Rohan Vernekar</h1>
+            <p class="tagline">EEE Student | Full-Stack Developer | Open-Source Enthusiast</p>
+            <div class="contact-links">
+                <a href="mailto:Email">
+                    <span>📧</span>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/ROHAN-M-V" target="_blank" rel="noopener">
+                    <span>💻</span>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/rohan-vernekar-131595284" target="_blank" rel="noopener">
+                    <span>🔗</span>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About</h2>
+            <p style="color: var(--text-medium); font-size: 1.1rem; line-height: 1.8;">
+                Enthusiastic student passionate about open-source development and web technologies. 
+                Experienced in building full-stack applications with modern frameworks and technologies, with a strong 
+                foundation in data structures, algorithms, and problem-solving.
+            </p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">FastAPI</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Competencies</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>
+                    AI-Powered Quiz Website
+                    <a href="#">GitHub Link</a>
+                </h3>
+                <p>
+                    Built a real-time AI-generated quiz platform with a responsive frontend and FastAPI backend. 
+                    Implemented secure authentication and MongoDB storage for user data and quiz history.
+                </p>
+            </div>
+            <div class="project-card">
+                <h3>
+                    Feedback Summarizer App
+                    <a href="#">GitHub Link</a>
+                </h3>
+                <p>
+                    Built a Python + FastAPI web app that stores and summarizes user feedback, displaying average 
+                    ratings and sentiment analysis results.
+                </p>
+            </div>
+            <div class="project-card">
+                <h3>ToDo Web Application</h3>
+                <p>
+                    Created a full-stack ToDo manager using JavaScript and Node.js with MongoDB integration for 
+                    persistent data storage and real-time updates.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Technology (B.Tech) in EEE</h3>
+                <div class="education-meta">NIT Goa, Cuncolim | 2025 – Present</div>
+                <div class="education-courses">
+                    <strong>Relevant Courses:</strong> Data Structures, Algorithms, Operating Systems, Web Development
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Achievements</h2>
+            <ul class="achievements-list">
+                <li>Achieved 98.01 percentile in JEE Mains 2025, placing among the top national performers</li>
+                <li>Built multiple projects using HTML, CSS, JavaScript, FastAPI, MongoDB, and modern AI APIs, showcasing strong full-stack development skills</li>
+                <li>Demonstrated excellent communication skills and an effective teamwork mindset during projects and hackathons</li>
+                <li>Maintained a typing speed of 55 WPM, enabling fast coding, documentation, and workflow efficiency</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Activities</h2>
+            <ul class="achievements-list">
+                <li>Member of the Coding Club, actively participating in hackathons and online contests</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Rohan Vernekar. Last updated:January 2026</p>
+    </footer>
+</body>
+</html>
