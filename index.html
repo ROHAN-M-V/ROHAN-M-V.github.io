@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rohan Vernekar </title>
+    <title>Rohan Vernekar - Computer Science Student</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,49 +14,122 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --text-dark: #1f2937;
-            --text-medium: #4b5563;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --bg-white: #ffffff;
-            --border: #e5e7eb;
-            --accent: #3b82f6;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff006e;
+            --neon-green: #39ff14;
+            --neon-purple: #b026ff;
+            --dark-bg: #0a0e27;
+            --darker-bg: #050814;
+            --card-bg: #0f1729;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Fira Code', monospace;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-light);
+            color: #e0e0e0;
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0, 243, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(176, 38, 255, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 243, 255, 0.02) 50%,
+                transparent 100%
+            );
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 80px 20px 60px;
+            padding: 120px 20px 80px;
             text-align: center;
+            position: relative;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: var(--neon-cyan);
+            text-shadow: 
+                0 0 10px var(--neon-cyan),
+                0 0 20px var(--neon-cyan),
+                0 0 40px var(--neon-cyan);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 10px var(--neon-cyan),
+                    0 0 20px var(--neon-cyan),
+                    0 0 40px var(--neon-cyan);
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
         }
 
         .tagline {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            margin-bottom: 30px;
-            font-weight: 300;
+            font-size: 1.3rem;
+            color: var(--neon-green);
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 0 0 10px var(--neon-green);
+            letter-spacing: 1px;
+        }
+
+        .tagline::before {
+            content: '> ';
+            color: var(--neon-pink);
         }
 
         .contact-links {
@@ -62,136 +137,271 @@
             justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
-            margin-top: 25px;
+            margin-top: 40px;
         }
 
         .contact-links a {
-            color: white;
+            color: var(--neon-cyan);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            gap: 10px;
+            padding: 12px 28px;
+            background: rgba(0, 243, 255, 0.05);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 4px;
             transition: all 0.3s ease;
             font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-cyan);
+            transition: left 0.3s ease;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .contact-links a:hover::before {
+            left: 0;
         }
 
         .contact-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
+            box-shadow: 
+                0 0 20px var(--neon-cyan),
+                inset 0 0 20px rgba(0, 243, 255, 0.2);
+            transform: translateY(-3px);
         }
 
         section {
-            background: var(--bg-white);
-            margin: 30px auto;
-            padding: 50px 30px;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background: rgba(15, 23, 41, 0.6);
+            margin: 40px auto;
+            padding: 50px 40px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 8px;
+            box-shadow: 
+                0 0 20px rgba(0, 243, 255, 0.1),
+                inset 0 0 20px rgba(0, 243, 255, 0.02);
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple), var(--neon-cyan));
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        section:hover::before {
+            opacity: 0.3;
         }
 
         h2 {
             font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 30px;
+            color: var(--neon-pink);
+            margin-bottom: 35px;
             padding-bottom: 15px;
-            border-bottom: 3px solid var(--primary);
+            border-bottom: 2px solid var(--neon-pink);
             display: inline-block;
+            text-shadow: 0 0 10px var(--neon-pink);
+            letter-spacing: 2px;
+        }
+
+        h2::before {
+            content: '// ';
+            color: var(--neon-green);
+        }
+
+        .about-text {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            line-height: 1.9;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 25px;
-            margin-top: 30px;
+            margin-top: 35px;
+        }
+
+        .skill-category {
+            background: rgba(5, 8, 20, 0.5);
+            padding: 30px;
+            border: 1px solid var(--neon-purple);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(176, 38, 255, 0.4);
+            border-color: var(--neon-cyan);
         }
 
         .skill-category h3 {
-            color: var(--primary);
+            color: var(--neon-green);
             font-size: 1.1rem;
-            margin-bottom: 12px;
+            margin-bottom: 18px;
             font-weight: 600;
+            text-shadow: 0 0 8px var(--neon-green);
         }
 
         .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: var(--bg-light);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            border: 1px solid var(--border);
-        }
-
-        .project-card {
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .project-card h3 {
-            color: var(--text-dark);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
             gap: 10px;
         }
 
-        .project-card a {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
+        .skill-tag {
+            background: rgba(0, 243, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
             font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 243, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+
+        .project-card {
+            background: rgba(5, 8, 20, 0.5);
+            padding: 35px;
+            margin-bottom: 25px;
+            border: 1px solid var(--neon-cyan);
+            border-left: 4px solid var(--neon-pink);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink);
+            transition: width 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .project-card:hover::before {
+            width: 8px;
+        }
+
+        .project-card h3 {
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .project-card a {
+            color: var(--neon-green);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .project-card a:hover {
-            text-decoration: underline;
+            background: rgba(57, 255, 20, 0.2);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
         }
 
         .project-card p {
-            color: var(--text-medium);
-            line-height: 1.7;
-            margin-top: 10px;
+            color: #a0a0a0;
+            line-height: 1.8;
+            margin-top: 12px;
         }
 
         .education-item {
-            padding: 20px;
-            border-left: 3px solid var(--primary);
-            margin-bottom: 20px;
-            background: var(--bg-light);
-            border-radius: 0 8px 8px 0;
+            background: rgba(5, 8, 20, 0.5);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid var(--neon-purple);
+            border-radius: 6px;
+            border-left: 4px solid var(--neon-green);
+            position: relative;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
         }
 
         .education-item h3 {
-            color: var(--text-dark);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+            color: var(--neon-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-cyan);
         }
 
         .education-meta {
-            color: var(--text-light);
+            color: var(--neon-purple);
             font-size: 0.95rem;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .education-courses {
-            color: var(--text-medium);
+            color: #a0a0a0;
             font-size: 0.95rem;
-            margin-top: 10px;
+            margin-top: 12px;
+        }
+
+        .education-courses strong {
+            color: var(--neon-green);
         }
 
         .achievements-list {
@@ -199,36 +409,55 @@
         }
 
         .achievements-list li {
-            padding: 15px 0 15px 35px;
+            padding: 20px 0 20px 45px;
             position: relative;
-            color: var(--text-medium);
-            line-height: 1.7;
-            border-bottom: 1px solid var(--border);
+            color: #b0b0b0;
+            line-height: 1.8;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
         .achievements-list li:last-child {
             border-bottom: none;
         }
 
+        .achievements-list li:hover {
+            color: #e0e0e0;
+            padding-left: 50px;
+        }
+
         .achievements-list li:before {
-            content: "✓";
+            content: ">";
             position: absolute;
-            left: 0;
-            color: var(--primary);
+            left: 15px;
+            color: var(--neon-green);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px var(--neon-green);
         }
 
         footer {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--text-light);
+            padding: 60px 20px;
+            color: var(--neon-cyan);
             font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            margin-top: 60px;
+        }
+
+        footer::before {
+            content: '[ ';
+            color: var(--neon-pink);
+        }
+
+        footer::after {
+            content: ' ]';
+            color: var(--neon-pink);
         }
 
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .tagline {
@@ -236,12 +465,12 @@
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             section {
-                padding: 35px 20px;
-                margin: 20px auto;
+                padding: 35px 25px;
+                margin: 25px auto;
             }
 
             .contact-links {
@@ -256,22 +485,26 @@
 
         @media (max-width: 480px) {
             header {
-                padding: 60px 20px 40px;
+                padding: 90px 20px 60px;
             }
 
             h1 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="scanline"></div>
+    
     <header>
         <div class="container">
-            <h1>Rohan Vernekar</h1>
+            <div class="glitch-wrapper">
+                <h1>Rohan Vernekar</h1>
+            </div>
             <p class="tagline">EEE Student | Full-Stack Developer | Open-Source Enthusiast</p>
             <div class="contact-links">
-                <a href="mailto:Email">
+                <a href="mailto:vernekarrohan38@gmail.com">
                     <span>📧</span>
                     <span>Email</span>
                 </a>
@@ -279,7 +512,7 @@
                     <span>💻</span>
                     <span>GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/rohan-vernekar-131595284" target="_blank" rel="noopener">
+                <a href="https://www.linkedin.com/in/rohan-vernekar-131595284/" target="_blank" rel="noopener">
                     <span>🔗</span>
                     <span>LinkedIn</span>
                 </a>
@@ -290,7 +523,7 @@
     <div class="container">
         <section>
             <h2>About</h2>
-            <p style="color: var(--text-medium); font-size: 1.1rem; line-height: 1.8;">
+            <p class="about-text">
                 Enthusiastic student passionate about open-source development and web technologies. 
                 Experienced in building full-stack applications with modern frameworks and technologies, with a strong 
                 foundation in data structures, algorithms, and problem-solving.
@@ -342,7 +575,7 @@
             <div class="project-card">
                 <h3>
                     AI-Powered Quiz Website
-                    <a href="#">GitHub Link</a>
+                    <a href="https://github.com/ROHAN-M-V/winterhackproject">GitHub Link</a>
                 </h3>
                 <p>
                     Built a real-time AI-generated quiz platform with a responsive frontend and FastAPI backend. 
@@ -352,7 +585,7 @@
             <div class="project-card">
                 <h3>
                     Feedback Summarizer App
-                    <a href="#">GitHub Link</a>
+                    <a href="https://github.com/ROHAN-M-V/demo-ml">GitHub Link</a>
                 </h3>
                 <p>
                     Built a Python + FastAPI web app that stores and summarizes user feedback, displaying average 
@@ -398,7 +631,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Rohan Vernekar. Last updated:January 2026</p>
+        <p>&copy; 2025 Rohan Vernekar. Last updated: January 2025</p>
     </footer>
 </body>
 </html>
