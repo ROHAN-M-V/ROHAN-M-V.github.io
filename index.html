@@ -1427,7 +1427,7 @@
             const shapes = document.querySelectorAll('.hero-shape');
             shapes.forEach((shape, i) => {
                 const speed = (i + 1) * 0.15;
-                shape.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+                shape.style.transform = `translateY(${scrollY * speed}px)`;
             });
         });
 
@@ -1460,7 +1460,7 @@
                 const centerY = rect.height / 2;
                 const rotateX = (y - centerY) / 20;
                 const rotateY = (centerX - x) / 20;
-                card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
