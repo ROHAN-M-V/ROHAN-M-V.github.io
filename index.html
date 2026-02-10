@@ -737,6 +737,318 @@
             z-index: 10000;
             transition: width 0.1s ease;
         }
+
+        /* ===== CRAZY SCROLL ANIMATIONS ===== */
+
+        /* Base hidden state for all scroll-animated elements */
+        .anim-fade-up {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-fade-down {
+            opacity: 0;
+            transform: translateY(-80px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-fade-down.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-slide-left {
+            opacity: 0;
+            transform: translateX(-120px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .anim-slide-right {
+            opacity: 0;
+            transform: translateX(120px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .anim-zoom-in {
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .anim-zoom-out {
+            opacity: 0;
+            transform: scale(1.8);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-zoom-out.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .anim-flip-up {
+            opacity: 0;
+            transform: perspective(800px) rotateX(30deg) translateY(60px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-flip-up.visible {
+            opacity: 1;
+            transform: perspective(800px) rotateX(0deg) translateY(0);
+        }
+
+        .anim-flip-left {
+            opacity: 0;
+            transform: perspective(800px) rotateY(40deg) translateX(-60px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-flip-left.visible {
+            opacity: 1;
+            transform: perspective(800px) rotateY(0deg) translateX(0);
+        }
+
+        .anim-rotate-in {
+            opacity: 0;
+            transform: rotate(-15deg) scale(0.6);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-rotate-in.visible {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .anim-blur-in {
+            opacity: 0;
+            filter: blur(20px);
+            transform: scale(0.9);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-blur-in.visible {
+            opacity: 1;
+            filter: blur(0px);
+            transform: scale(1);
+        }
+
+        .anim-bounce-in {
+            opacity: 0;
+            transform: translateY(100px) scale(0.5);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .anim-bounce-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .anim-spiral-in {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-spiral-in.visible {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .anim-skew-in {
+            opacity: 0;
+            transform: skewY(8deg) translateY(60px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-skew-in.visible {
+            opacity: 1;
+            transform: skewY(0deg) translateY(0);
+        }
+
+        /* Stagger delay utility classes */
+        .anim-delay-1 { transition-delay: 0.1s !important; }
+        .anim-delay-2 { transition-delay: 0.2s !important; }
+        .anim-delay-3 { transition-delay: 0.3s !important; }
+        .anim-delay-4 { transition-delay: 0.4s !important; }
+        .anim-delay-5 { transition-delay: 0.5s !important; }
+        .anim-delay-6 { transition-delay: 0.6s !important; }
+
+        /* Glow pulse on visible */
+        .anim-glow.visible {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px rgba(0, 102, 255, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(0, 102, 255, 0.6), 0 0 60px rgba(0, 217, 255, 0.3); }
+        }
+
+        /* Text reveal animation */
+        .anim-text-reveal {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .anim-text-reveal.visible {
+            clip-path: inset(0 0% 0 0);
+        }
+
+        /* Parallax floating elements */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { opacity: 0; transform: translateY(-10vh) rotate(720deg); }
+        }
+
+        /* Counter animation for stats */
+        .stat-number {
+            transition: all 0.6s ease;
+        }
+        .stat-card.visible .stat-number {
+            animation: numberPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes numberPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Continuous hover wiggle for cards */
+        .skill-card.visible:hover {
+            animation: wiggle 0.5s ease;
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: translateY(-8px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(-2deg); }
+            75% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        /* Section divider animation */
+        .section-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent);
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 0 auto;
+        }
+        .section-divider.visible {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        /* Hero floating shapes */
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        .hero-shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 10%;
+            right: -5%;
+            animation: heroFloat1 6s ease-in-out infinite;
+        }
+        .hero-shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            bottom: 15%;
+            left: -3%;
+            animation: heroFloat2 8s ease-in-out infinite;
+        }
+        .hero-shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--gradient-2);
+            top: 30%;
+            left: 10%;
+            animation: heroFloat3 7s ease-in-out infinite;
+        }
+        @keyframes heroFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-30px, 20px) scale(1.1); }
+            66% { transform: translate(20px, -10px) scale(0.9); }
+        }
+        @keyframes heroFloat2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(40px, -30px) rotate(180deg); }
+        }
+        @keyframes heroFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 40px) scale(1.3); }
+        }
+
+        /* Tag stagger pop-in */
+        .skill-card.visible .tag {
+            animation: tagPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        .skill-card.visible .tag:nth-child(1) { animation-delay: 0.3s; }
+        .skill-card.visible .tag:nth-child(2) { animation-delay: 0.4s; }
+        .skill-card.visible .tag:nth-child(3) { animation-delay: 0.5s; }
+        .skill-card.visible .tag:nth-child(4) { animation-delay: 0.6s; }
+        .skill-card.visible .tag:nth-child(5) { animation-delay: 0.7s; }
+        @keyframes tagPop {
+            0% { opacity: 0; transform: scale(0) rotate(-10deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        /* Project card hover tilt */
+        .project-card {
+            transform-style: preserve-3d;
+        }
+
+        /* Timeline draw-in */
+        .timeline::before {
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .timeline.anim-timeline-active::before {
+            transform: scaleY(1);
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .floating-particles { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -760,8 +1072,14 @@
         </div>
     </nav>
 
+    <!-- Floating particles background -->
+    <div class="floating-particles" id="particles"></div>
+
     <section class="hero">
         <div class="hero-bg"></div>
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
         <div class="hero-content">
             <span class="hero-label">💡 AVAILABLE FOR OPPORTUNITIES</span>
             <h1>
@@ -784,9 +1102,10 @@
     </section>
 
     <section class="section" id="about">
+        <div class="section-divider"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">About Me</span>
+            <div class="section-header anim-blur-in">
+                <span class="section-label anim-text-reveal">About Me</span>
                 <h2 class="section-title">Building the Future, One Line at a Time</h2>
                 <p class="section-description">
                     I'm a passionate developer and EEE student at NIT Goa, specializing in full-stack development 
@@ -795,19 +1114,19 @@
                 </p>
             </div>
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card anim-bounce-in anim-delay-1">
                     <div class="stat-number">98.01</div>
                     <div class="stat-label">JEE Percentile</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card anim-bounce-in anim-delay-2">
                     <div class="stat-number">10+</div>
                     <div class="stat-label">Projects Built</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card anim-bounce-in anim-delay-3">
                     <div class="stat-number">5+</div>
                     <div class="stat-label">Technologies</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card anim-bounce-in anim-delay-4">
                     <div class="stat-number">55</div>
                     <div class="stat-label">WPM Typing Speed</div>
                 </div>
@@ -816,16 +1135,17 @@
     </section>
 
     <section class="section" id="skills">
+        <div class="section-divider"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Technical Expertise</span>
+            <div class="section-header anim-fade-down">
+                <span class="section-label anim-text-reveal">Technical Expertise</span>
                 <h2 class="section-title">Skills & Technologies</h2>
                 <p class="section-description">
                     A comprehensive toolkit for building modern, scalable applications
                 </p>
             </div>
             <div class="skills-grid">
-                <div class="skill-card">
+                <div class="skill-card anim-flip-left anim-delay-1 anim-glow">
                     <div class="skill-icon">💻</div>
                     <h3>Languages</h3>
                     <div class="skill-tags">
@@ -835,7 +1155,7 @@
                         <span class="tag">C</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card anim-flip-left anim-delay-2 anim-glow">
                     <div class="skill-icon">⚡</div>
                     <h3>Frameworks</h3>
                     <div class="skill-tags">
@@ -844,7 +1164,7 @@
                         <span class="tag">FastAPI</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card anim-flip-left anim-delay-3 anim-glow">
                     <div class="skill-icon">🛠️</div>
                     <h3>Tools & Platforms</h3>
                     <div class="skill-tags">
@@ -855,7 +1175,7 @@
                         <span class="tag">MongoDB</span>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card anim-flip-left anim-delay-4 anim-glow">
                     <div class="skill-icon">🎯</div>
                     <h3>Core Competencies</h3>
                     <div class="skill-tags">
@@ -869,16 +1189,17 @@
     </section>
 
     <section class="section" id="projects">
+        <div class="section-divider"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Portfolio</span>
+            <div class="section-header anim-zoom-in">
+                <span class="section-label anim-text-reveal">Portfolio</span>
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-description">
                     Showcasing my best work in full-stack development and AI integration
                 </p>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card anim-slide-left anim-delay-1">
                     <div class="project-content">
                         <div class="project-header">
                             <div>
@@ -903,7 +1224,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card anim-slide-right anim-delay-2">
                     <div class="project-content">
                         <div class="project-header">
                             <div>
@@ -928,7 +1249,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card anim-flip-up anim-delay-3">
                     <div class="project-content">
                         <div class="project-header">
                             <div>
@@ -953,13 +1274,14 @@
     </section>
 
     <section class="section" id="education">
+        <div class="section-divider"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Academic Journey</span>
+            <div class="section-header anim-skew-in">
+                <span class="section-label anim-text-reveal">Academic Journey</span>
                 <h2 class="section-title">Education & Achievements</h2>
             </div>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item anim-slide-left anim-delay-1">
                     <h3>Bachelor of Technology in EEE</h3>
                     <div class="timeline-meta">NIT Goa, Cuncolim | 2025 – Present</div>
                     <div class="timeline-description">
@@ -980,26 +1302,27 @@
     </section>
 
     <section class="section" id="contact">
+        <div class="section-divider"></div>
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Get In Touch</span>
+            <div class="section-header anim-rotate-in">
+                <span class="section-label anim-text-reveal">Get In Touch</span>
                 <h2 class="section-title">Let's Build Something Amazing</h2>
                 <p class="section-description">
                     Open to opportunities, collaborations, and interesting conversations
                 </p>
             </div>
             <div class="contact-grid">
-                <a href="mailto:vernekarrohan38@gmail.com" class="contact-card">
+                <a href="mailto:vernekarrohan38@gmail.com" class="contact-card anim-spiral-in anim-delay-1">
                     <div class="contact-icon">📧</div>
                     <h3>Email</h3>
                     <p>vernekarrohan38@gmail.com</p>
                 </a>
-                <a href="https://github.com/ROHAN-M-V" target="_blank" rel="noopener" class="contact-card">
+                <a href="https://github.com/ROHAN-M-V" target="_blank" rel="noopener" class="contact-card anim-spiral-in anim-delay-2">
                     <div class="contact-icon">💻</div>
                     <h3>GitHub</h3>
                     <p>@ROHAN-M-V</p>
                 </a>
-                <a href="https://www.linkedin.com/in/rohan-vernekar-131595284/" target="_blank" rel="noopener" class="contact-card">
+                <a href="https://www.linkedin.com/in/rohan-vernekar-131595284/" target="_blank" rel="noopener" class="contact-card anim-spiral-in anim-delay-3">
                     <div class="contact-icon">🔗</div>
                     <h3>LinkedIn</h3>
                     <p>Rohan Vernekar</p>
@@ -1057,7 +1380,7 @@
         // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1068,9 +1391,80 @@
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        document.querySelectorAll('.section-header, .skill-card, .project-card, .timeline-item, .stat-card, .contact-card').forEach(el => {
+        // Observe all animated elements (original + new animation classes)
+        const animatedSelectors = [
+            '.section-header', '.skill-card', '.project-card',
+            '.timeline-item', '.stat-card', '.contact-card',
+            '.section-divider', '.anim-text-reveal',
+            '.anim-fade-up', '.anim-fade-down',
+            '.anim-slide-left', '.anim-slide-right',
+            '.anim-zoom-in', '.anim-zoom-out',
+            '.anim-flip-up', '.anim-flip-left',
+            '.anim-rotate-in', '.anim-blur-in',
+            '.anim-bounce-in', '.anim-spiral-in',
+            '.anim-skew-in'
+        ];
+        document.querySelectorAll(animatedSelectors.join(', ')).forEach(el => {
             observer.observe(el);
+        });
+
+        // Timeline draw-in animation
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('anim-timeline-active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline').forEach(el => {
+            timelineObserver.observe(el);
+        });
+
+        // Parallax effect on scroll for hero shapes
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const shapes = document.querySelectorAll('.hero-shape');
+            shapes.forEach((shape, i) => {
+                const speed = (i + 1) * 0.15;
+                shape.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+            });
+        });
+
+        // Floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            if (!container) return;
+            const colors = ['var(--primary)', 'var(--accent)', '#667eea', '#764ba2'];
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 4 + 2) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // 3D tilt effect on project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+            });
         });
 
         // Smooth scroll with offset for fixed nav
