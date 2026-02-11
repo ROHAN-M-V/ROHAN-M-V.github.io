@@ -63,10 +63,12 @@
             border: 2px solid var(--acid);
             border-radius: 50%;
             position: fixed;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 10000;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-            mix-blend-mode: difference;
+            transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.3s ease;
+            opacity: 0;
         }
 
         .cursor-follower {
@@ -75,11 +77,12 @@
             border: 1px solid var(--ice);
             border-radius: 50%;
             position: fixed;
+            top: 0;
+            left: 0;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.3s ease;
-            opacity: 0.5;
-            mix-blend-mode: difference;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
         }
 
         @media (hover: none) {
@@ -1117,8 +1120,14 @@
         if (window.matchMedia('(hover: hover)').matches && !prefersReducedMotion) {
             const cursor = document.querySelector('.cursor');
             const follower = document.querySelector('.cursor-follower');
+            let cursorVisible = false;
 
             document.addEventListener('mousemove', (e) => {
+                if (!cursorVisible) {
+                    cursor.style.opacity = '1';
+                    follower.style.opacity = '0.5';
+                    cursorVisible = true;
+                }
                 cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
                 follower.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
             });
